@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9dc9dc5f-8c86-4326-9795-75d8dd570584"
+      }
+    },
+    "owner": "dj_puchu"
   }
 }
