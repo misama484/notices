@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native"
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from "react-native"
 
 import Card from "../components/Card"
+import { Divider } from 'react-native-paper';
 
 
 
@@ -24,22 +25,26 @@ const fetchNotices = () => {
 
 return (
   <ScrollView>
-    <View>
+    <View style = {{backgroundColor: "#4630AB"}}> 
       {notices.map((notice, index) => {            
-        return (               
+        return ( 
+          <>            
           <TouchableOpacity
             key={index}
+            style = {styles.noticeContainer}
             onPress={() => {
               setModalVisible(!modalVisible)
               setNotice(notice);
             }}   
             >
               <Image
-              style={{width: 450, height: 280, borderRadius: 20}}
+              style={styles.image}
               src={notice.image}
               />
-              <Text>{notice.title}</Text>
+              <Text style = {styles.titleText}>{notice.title}</Text>
             </TouchableOpacity>
+            <Divider style = {{marginVertical: 10,}}/>
+            </>  
             );
       })}
       <Card
@@ -50,5 +55,29 @@ return (
   </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  noticeContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#4630AB',
+  }, 
+  image: {
+    width: 450,
+    height: 280,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titleText:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    marginTop: 20,
+    marginBottom: 20,  
+  },
+})
 
 export default Home

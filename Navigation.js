@@ -33,7 +33,7 @@ function Menu(){
 
 const styles = StyleSheet.create({
   navigationBar: {
-    backgroundColor: '#f1c40f',
+    backgroundColor: '#4630AB',
     shadowOpacity: 0,
     elevation: 0,
 
