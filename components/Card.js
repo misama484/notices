@@ -18,7 +18,7 @@ const Card = ({
   return (
     <Modal
       visible={modalVisible}
-      onDismiss={() => setModalVisible(false)}
+      onRequestClose={() => setModalVisible(!modalVisible)}
       animationType = "slide"
       transparent = {true}
       
@@ -43,7 +43,8 @@ const Card = ({
         </View>
         <Button              
             onPress={() => setModalVisible(!modalVisible)}
-            style = {{}}
+            mode='outlained'
+            
           >Cerrar</Button>
       </ScrollView>
       

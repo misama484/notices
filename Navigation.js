@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView } from 're
 
 import Logo from "./assets/Logo.png"
 import Home from"./screens/Home";
+import Search from "./components/Search"
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -24,6 +25,16 @@ function Menu(){
               tabBarLabel: 'Home',
               tabBarIcon: ({ color }) => (
                 <Icons name="home" color={color} size={26} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Search"
+            component={Search}
+            options={{
+              tabBarLabel: 'Search',
+              tabBarIcon: ({ color }) => (
+                <Icons name="search" color={color} size={26} />
               ),
             }}
           />
