@@ -17,7 +17,7 @@ useEffect(() => {
  },[]);
 
 const fetchNotices = () => {
-  fetch('http://api.mediastack.com/v1/news?access_key=4871737edbb903eb46aa728fec1a155f&languages=es&country=es&categories=science')
+  fetch('http://api.mediastack.com/v1/news?access_key=4871737edbb903eb46aa728fec1a155f&languages=es&country=es&categories=general')
   .then(response => response.json())
   .then(notices => setNotices(notices.data));
   };

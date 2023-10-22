@@ -21,6 +21,7 @@ const Card = ({
       onDismiss={() => setModalVisible(false)}
       animationType = "slide"
       transparent = {true}
+      
       >
       <ScrollView style = {styles.scrollStyle}>
         <View style = {styles.centeredView}>
@@ -36,14 +37,16 @@ const Card = ({
             <Text>{notice.author}</Text>
             <Text>{notice.source}</Text>
             <Text>{notice.url}</Text>
-            <Text>{notice.published_at}</Text>
-            <Button
-              style='outlained'
-              >Ir a noticia</Button>
-
+            <Text>{notice.published_at}</Text>            
           </View>
+          
         </View>
+        <Button              
+            onPress={() => setModalVisible(!modalVisible)}
+            style = {{}}
+          >Cerrar</Button>
       </ScrollView>
+      
     </Modal>
   )
 }
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginBottom: 90,
     backgroundColor: "#fff",
-    padding: 20,
+    paddingHorizontal: 20,
     borderRadius: 20,
     borderWidth: 5,
     borderColor: "#000",
@@ -80,6 +83,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10,
   },
+  infoNoticeContainer:{
+    borderWidth: 2,
+    borderColor: "#000"
+  }
 })
 
 export default Card
