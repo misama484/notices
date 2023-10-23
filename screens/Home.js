@@ -8,23 +8,31 @@ import { Divider } from 'react-native-paper';
 
 
 const Home = (navigation) => {
-  const url = 'http://api.mediastack.com/v1/news?access_key=4871737edbb903eb46aa728fec1a155f&languages=es&country=es&categories=general'
-
+  
+  
 const [notices, setNotices] = useState([]);
 const [notice, setNotice] = useState({});
 const [modalVisible, setModalVisible] = useState(false);
 const [ expanded, setExpanded] = useState(false)
+const [ category, setCategory ] = useState("science")
+
+
+
 useEffect(() => {
   fetchNotices();
- },[]);
+ },[category]);
 
 const fetchNotices = () => {
+  const url = 'http://api.mediastack.com/v1/news?access_key=4871737edbb903eb46aa728fec1a155f&languages=es&country=es&categories=' + category
   fetch(url)
   .then(response => response.json())
   .then(notices => setNotices(notices.data));
   };
 
-
+const handlePressList = (category) => {
+  setExpanded(!expanded)
+  setCategory(category)
+}
 return (
   <>
   <List.Section
@@ -32,17 +40,48 @@ return (
   >
         <List.Accordion
           title="Categoria"
-          left={props => <List.Icon {...props} icon="folder"/>}
+          titleStyle = {styles.textMenuCategories}
+          rippleColor= "#fff"
+          left={props => <List.Icon {...props} icon="equal" color="#fff" />}
           expanded={expanded}
           onPress={() => setExpanded(!expanded)}
+          style = {{backgroundColor: "#4630AB"}}
           >
             <List.Item 
-              title="General" 
-              onPress={() => {
-                Alert.alert("Cerrando")
-              }}
+              title="General"
+              titleStyle = {styles.textMenuCategories}
+              onPress={() => handlePressList("general")}
               />
-            <List.Item title="Ciencia" />
+            <List.Item 
+              title="Ciencia"
+              titleStyle = {styles.textMenuCategories} 
+              onPress={() => handlePressList("science")}
+              />
+              <List.Item 
+              title="Tecnologia"
+              titleStyle = {styles.textMenuCategories} 
+              onPress={() => handlePressList("technology")}
+              />
+              <List.Item 
+              title="Deportes"
+              titleStyle = {styles.textMenuCategories} 
+              onPress={() => handlePressList("sports")}
+              />
+              <List.Item 
+              title="Negocios"
+              titleStyle = {styles.textMenuCategories} 
+              onPress={() => handlePressList("business")}
+              />
+              <List.Item 
+              title="Entretenimiento"
+              titleStyle = {styles.textMenuCategories} 
+              onPress={() => handlePressList("entertainment")}
+              />
+              <List.Item 
+              title="Salud"
+              titleStyle = {styles.textMenuCategories} 
+              onPress={() => handlePressList("health")}
+              />
         </List.Accordion>
       </List.Section>
   <ScrollView>
@@ -102,6 +141,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 20,
     marginBottom: 20,  
+  },
+  textMenuCategories:{
+    color: "#fff",
   },
 })
 
