@@ -1,11 +1,12 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Icons from "react-native-vector-icons/MaterialIcons";
-import { StyleSheet, Text, View, Image, ImageBackground, SafeAreaView } from 'react-native';
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import { StyleSheet, Text, View, Image, } from 'react-native';
 
 import Logo from "./assets/Logo.png"
 import Home from"./screens/Home";
-import Search from "./components/Search"
+import Weather from "./components/Weather"
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -29,12 +30,12 @@ function Menu(){
             }}
           />
           <Tab.Screen
-            name="Search"
-            component={Search}
+            name="Weather"
+            component={Weather}
             options={{
-              tabBarLabel: 'Search',
+              tabBarLabel: 'Weather',
               tabBarIcon: ({ color }) => (
-                <Icons name="search" color={color} size={26} />
+                <Icon name="weather-sunny" color={color} size={26} />
               ),
             }}
           />
