@@ -86,11 +86,10 @@ return (
       </List.Section>
   <ScrollView>
     <View style = {{backgroundColor: "#4630AB"}}> 
-      {notices.map((notice, index) => {            
+      {notices.map((notice) => {            
         return ( 
           <>            
           <TouchableOpacity
-            key={index}
             style = {styles.noticeContainer}
             onPress={() => {
               setModalVisible(!modalVisible)
