@@ -9,9 +9,10 @@ const Search = () => {
   const [expanded, setExpanded] = useState(false)
   const [city, setCity] = useState("")
   const [ciudad, setCiudad] = useState([])
+  const [forecast, setForecast] = useState([])
   
   useEffect(() => {
-    
+   
    },[ciudad]);
 
   //const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&`
@@ -22,11 +23,22 @@ const Search = () => {
   .then(response => response.json())
   .then(ciudad => setCiudad(ciudad));
   };
+
+  const fetchForecastWeather = () => {
+    const url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=0a6b47b5eeda727c6b9d969e42c82b6b`
+    fetch(url)
+    .then(response => response.json())
+    .then(forecast => setForecast(forecast.list));
+    };
   
   //mostrar icono openweathermap, NO FUNCIONA
   iconcode = ciudad.weather[0].icon
   let icon = "http://openweathermap.org/img/w/" + iconcode + ".png";
     
+const handleWeather = () => {
+  fetchWeather()
+  fetchForecastWeather()
+}
 
 
   return(
@@ -39,17 +51,18 @@ const Search = () => {
     />
       <Button
         mode="outlained"
-        onPress={() => {fetchWeather()}}
+        onPress={() => {handleWeather()}}
       >Buscar</Button>
 
       <View style = {styles.weatherContainer}>
         <Text style = {styles.cityTitle}>{ciudad.name}</Text>
         <Image
-          src="http://openweathermap.org/img/w/01d.png"
+          style={styles.iconWeather}
+          src={icon}
         />
-        <Text>Tiempo: {ciudad.weather[0].description}</Text>
+        <Text>{ciudad.weather[0].description}</Text>        
       </View>
-
+      
     </View>
   )
 
@@ -64,7 +77,11 @@ const styles = StyleSheet.create({
   cityTitle: {
     fontWeight: "bold",
     fontSize: 40,
-  }
+  },
+  iconWeather:{
+    width: 100,
+    height: 100
+  },
 })
 
 export default Search

@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 
   },
   header: {
-    height: 140,
+    height: 160,
     backgroundColor: '#4630AB',
     flexDirection: 'row',
     alignItems: 'center',
@@ -68,7 +68,7 @@ export default function Navigation() {
         <View style={styles.header}>
           <Image
           source={Logo}
-          style={{width:220, height:90, marginTop: 50}}
+          style={{width:220, height:90, marginTop: 50, borderRadius: 20, marginBottom: 20}}
           />
         </View>
 
