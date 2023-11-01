@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from "react-native"
 import { List } from "react-native-paper"
 
@@ -34,7 +34,7 @@ const handlePressList = (category) => {
   setCategory(category)
 }
 return (
-  <>
+  <Fragment key={notice.url}>
   <List.Section
     style = {styles.categoryList}
   >
@@ -112,7 +112,7 @@ return (
         notice={notice} />
     </View>
   </ScrollView>
-  </>
+  </Fragment>
   )
 }
 

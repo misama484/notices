@@ -36,8 +36,8 @@ const Search = () => {
   let icon = "http://openweathermap.org/img/w/" + iconcode + ".png";
     
 const handleWeather = () => {
-  fetchWeather()
-  fetchForecastWeather()
+  //fetchWeather()
+  //fetchForecastWeather()
 }
 
 
@@ -51,16 +51,16 @@ const handleWeather = () => {
     />
       <Button
         mode="outlained"
-        onPress={() => {handleWeather()}}
+        onPress={() => {fetchWeather()}}
       >Buscar</Button>
 
       <View style = {styles.weatherContainer}>
-        <Text style = {styles.cityTitle}>{ciudad.name}</Text>
+        <Text style = {styles.cityTitle}>Nombre Ciudad</Text>
         <Image
           style={styles.iconWeather}
           src={icon}
         />
-        <Text>{ciudad.weather[0].description}</Text>        
+        <Text>Descripcion</Text>        
       </View>
       
     </View>
