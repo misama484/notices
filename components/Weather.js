@@ -10,6 +10,8 @@ const Search = () => {
   const [city, setCity] = useState("")
   const [ciudad, setCiudad] = useState([])
   const [forecast, setForecast] = useState([])
+
+  let icon = `http://openweathermap.org/img/w/${ciudad.weather[0].icon}.png`
   
   useEffect(() => {
    
@@ -31,9 +33,6 @@ const Search = () => {
     .then(forecast => setForecast(forecast.list));
     };
   
-  //mostrar icono openweathermap, NO FUNCIONA
-  iconcode = ciudad.weather[0].icon
-  let icon = "http://openweathermap.org/img/w/" + iconcode + ".png";
     
 const handleWeather = () => {
   //fetchWeather()
@@ -55,12 +54,12 @@ const handleWeather = () => {
       >Buscar</Button>
 
       <View style = {styles.weatherContainer}>
-        <Text style = {styles.cityTitle}>Nombre Ciudad</Text>
+        <Text style = {styles.cityTitle}>{ciudad.name}</Text>
         <Image
           style={styles.iconWeather}
-          src={icon}
+          src= {icon}
         />
-        <Text>Descripcion</Text>        
+        <Text>{ciudad.weather[0].description}</Text>        
       </View>
       
     </View>
