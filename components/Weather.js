@@ -14,8 +14,8 @@ const Search = () => {
   let icon = `http://openweathermap.org/img/w/${ciudad.weather[0].icon}.png`
   
   useEffect(() => {
-   
-   },[ciudad]);
+   fetchWeather()
+   },[city]);
 
   //const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&`
 
@@ -54,12 +54,12 @@ const handleWeather = () => {
       >Buscar</Button>
 
       <View style = {styles.weatherContainer}>
-        <Text style = {styles.cityTitle}>{ciudad.name}</Text>
-        <Image
-          style={styles.iconWeather}
-          src= {icon}
-        />
-        <Text>{ciudad.weather[0].description}</Text>        
+      <Text style = {styles.cityTitle}>{ciudad.name}</Text>
+      <Image
+        style={styles.iconWeather}
+        src= {icon}
+      />
+      <Text>{ciudad.weather[0].description}</Text>        
       </View>
       
     </View>
