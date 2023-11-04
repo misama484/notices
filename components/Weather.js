@@ -7,27 +7,27 @@ const Search = () => {
   const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&appid=0a6b47b5eeda727c6b9d969e42c82b6b&lang=es&q=valencia"
 
   const [expanded, setExpanded] = useState(false)
-  const [city, setCity] = useState("")
+  const [city, setCity] = useState("valencia")
   const [ciudad, setCiudad] = useState([])
   const [forecast, setForecast] = useState([])
 
-  let icon = `http://openweathermap.org/img/w/${ciudad.weather[0].icon}.png`
-  
+ 
   useEffect(() => {
-   fetchWeather()
-   },[city]);
+   fetchWeather("valencia")
+   },[ciudad]);
 
   //const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&`
 
-  const fetchWeather = () => {
+  const fetchWeather = (city) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?&appid=0a6b47b5eeda727c6b9d969e42c82b6b&lang=es&q=${city}`
+  console.log(city)
   fetch(url)
   .then(response => response.json())
   .then(ciudad => setCiudad(ciudad));
   };
 
   const fetchForecastWeather = () => {
-    const url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=0a6b47b5eeda727c6b9d969e42c82b6b`
+    //const url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=0a6b47b5eeda727c6b9d969e42c82b6b`
     fetch(url)
     .then(response => response.json())
     .then(forecast => setForecast(forecast.list));
@@ -35,10 +35,12 @@ const Search = () => {
   
     
 const handleWeather = () => {
-  //fetchWeather()
+  fetchWeather()
   //fetchForecastWeather()
 }
 
+ //let icon = `http://openweathermap.org/img/w/${ciudad.weather[0].icon}.png`
+  
 
   return(
     <View>
@@ -50,14 +52,14 @@ const handleWeather = () => {
     />
       <Button
         mode="outlained"
-        onPress={() => {fetchWeather()}}
+        onPress={() => {handleWeather()}}
       >Buscar</Button>
 
       <View style = {styles.weatherContainer}>
       <Text style = {styles.cityTitle}>{ciudad.name}</Text>
       <Image
         style={styles.iconWeather}
-        src= {icon}
+        src= "http://openweathermap.org/img/w/01d.png"
       />
       <Text>{ciudad.weather[0].description}</Text>        
       </View>
