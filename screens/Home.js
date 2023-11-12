@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from "react-native"
 import { List } from "react-native-paper"
 
@@ -34,7 +34,7 @@ const handlePressList = (category) => {
   setCategory(category)
 }
 return (
-  <>
+  <Fragment key={notice.url}>
   <List.Section
     style = {styles.categoryList}
   >
@@ -86,11 +86,10 @@ return (
       </List.Section>
   <ScrollView>
     <View style = {{backgroundColor: "#4630AB"}}> 
-      {notices.map((notice, index) => {            
+      {notices.map((notice) => {            
         return ( 
           <>            
           <TouchableOpacity
-            key={index}
             style = {styles.noticeContainer}
             onPress={() => {
               setModalVisible(!modalVisible)
@@ -113,7 +112,7 @@ return (
         notice={notice} />
     </View>
   </ScrollView>
-  </>
+  </Fragment>
   )
 }
 
